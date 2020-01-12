@@ -131,10 +131,22 @@ console.table(sortByOldest);
 //             .map(link => link.textContent)
 //             .filter(streetName => streetName.includes('de'));
 
+//////////////////////////////
 // 7. sort Exercise
-// Sort the people alphabetically by last name
+//////////////////////////////
 
+// Sort the people alphabetically by last name
+const alphabeticallySorted = people.sort((lastOne, nextOne) => {
+  const [aLast, aFirst] = lastOne.split(", ");
+  const [bLast, bFirst] = nextOne.split(", ");
+  return aLast > bLast ? 1 : -1;
+});
+console.table(alphabeticallySorted);
+
+//////////////////////////////
 // 8. Reduce Exercise
+//////////////////////////////
+
 // Sum up the instances of each of these
 const data = [
   "car",
@@ -152,3 +164,13 @@ const data = [
   "car",
   "truck"
 ];
+
+const transport = data.reduce((obj, item) => {
+  if (!obj[item]) {
+    obj[item] = 0;
+  }
+  obj[item]++;
+  return obj;
+}, {});
+
+console.table(transport);
